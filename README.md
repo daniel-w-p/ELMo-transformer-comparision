@@ -1,14 +1,29 @@
-# ELMo Mini Lab (TensorFlow)
+# ELMo vs BERT Mini Lab (TensorFlow)
 
-A small, step-by-step Python project for **learning how the ELMo (Embeddings from Language Models) model works in practice** using **TensorFlow 2** and **TensorFlow Hub**.
+A small, step-by-step Python project for **understanding contextual word embeddings in practice**, using **ELMo and BERT** with **TensorFlow 2** and **TensorFlow Hub**.
 
-The goal of this mini-lab is to:
-- understand **what ELMo takes as input**,
-- inspect **what vectors it produces as output**,
-- explore **token-level vs sentence-level embeddings**,
-- and clearly see **contextual embeddings in action** (e.g. the word *"bank"* in different contexts).
+The goal of this mini-lab is **not training or fine-tuning**, but **inspection, comparison and intuition**.
 
-This project is intentionally minimal and educational — no training, no fine-tuning, just **inspection and intuition**.
+We focus on:
+- what **ELMo and BERT take as input**,
+- what **exact tensors they output**,
+- how **token-level and sentence-level embeddings differ**,
+- how **contextual meaning emerges**,
+- and how **ELMo and BERT differ conceptually and practically**.
+
+This repository is designed as a **hands-on notebook replacement** — everything is explicit, printed, and measurable.
+
+---
+
+## Learning Goals
+
+By the end of this mini-lab you should clearly understand:
+
+- why contextual embeddings ≠ static word vectors,
+- how **ELMo** and **BERT** represent tokens internally,
+- how **subword tokenization** (BERT) changes embedding inspection,
+- what “sentence embedding” actually means in each model,
+- why the same word has different vectors in different contexts.
 
 ---
 
@@ -43,6 +58,8 @@ elmo-mini-lab/
 - Python **3.9+**
 - TensorFlow **2.10+**
 - TensorFlow Hub
+- TensorFlow Text
+- NumPy
 
 Install dependencies:
 
@@ -50,9 +67,11 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-## Step-by-Step Overview
+# Step-by-Step Overview
 
-1. Inspect the ELMo model
+## Part 1. ELMo model
+
+### 1. Inspect the ELMo model
 File: inspect_elmo.py
 
 This script:
@@ -73,7 +92,7 @@ python inspect_elmo.py
 ```
 
 
-2. Sentence vs Token embeddings
+### 2. Sentence vs Token embeddings
 File: token_vs_sentence.py
 
 This script:
@@ -94,7 +113,7 @@ Run:
 python token_vs_sentence.py
 ```
 
-3. Contextual meaning demo: bank
+### 3. Contextual meaning demo: bank
 File: context_demo_bank.py
 
 This script compares the word "bank" in two sentences:
@@ -121,8 +140,7 @@ Run:
 python context_demo_bank.py
 ```
 
-
-Expected result:
+#### Expected result:
 
 - cosine similarity significantly lower than 1
 
@@ -140,6 +158,36 @@ Sentence embeddings have shape:
 [batch_size, embedding_dim]
 ```
 
+## Part 2: BERT — contextual subword embeddings
+
+Unlike ELMo, BERT:
+
+uses WordPiece tokenization,
+
+produces embeddings per layer,
+
+represents sentences via a special [CLS] token.
+
+This section mirrors the ELMo experiments step by step.
+
+### 4. Inspecting the BERT model
+
+File: inspect_bert.py
+
+This script:
+
+loads BERT from TensorFlow Hub,
+
+prints all available outputs,
+
+inspects shapes such as:
+
+[batch_size, seq_len, hidden_dim]
+
+Purpose:
+Understand what BERT outputs before interpreting them.
+
+---
 
 ## References & Licenses
 
