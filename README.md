@@ -20,9 +20,20 @@ elmo-mini-lab/
 ├── requirements.txt
 │
 ├── ### ELMo files
-├── inspect_elmo.py # Inspect available ELMo outputs and tensor shapes
-├── token_vs_sentence.py # Compare sentence-level and token-level embeddings
-└── context_demo_bank.py # Contextual demo: "bank" in different meanings
+├── elmo
+│   ├── inspect_elmo.py # Inspect available ELMo outputs and tensor shapes
+│   ├── token_vs_sentence.py # Compare sentence-level and token-level embeddings
+│   └── context_demo_bank.py # Contextual demo: "bank" in different meanings
+│
+├── ### Mini-Transformer
+├── transformer
+│   ├── mini_transformer.py # A simple Transformer model for testing embeddings
+│   ├── inspect_transformer.py # Inspect mini transformer outputs and tensor shapes
+│   └── padding_mask_and_weights.py # Inspect padding masking and attention weights
+│
+├── ### BERT files
+└── bert
+    └── inspect_bert.py # Inspect BERT outputs and tensor shapes
 ```
 
 ---
@@ -130,10 +141,11 @@ Sentence embeddings have shape:
 ```
 
 
+## References & Licenses
 
-## References
-Peters et al., Deep contextualized word representations, 2018
+### Models
+*   **ELMo**: Peters et al., [Deep contextualized word representations](https://arxiv.org/abs/1802.05365), 2018. Source: [TF Hub](https://tfhub.dev/google/elmo/3). License: [Apache 2.0](https://www.apache.org).
+*   **BERT**: Devlin et al., [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805), 2018. Source: [TF Hub](https://www.kaggle.com/models/tensorflow/bert/tensorFlow2/bert-en-uncased-l-12-h-768-a-12). License: [Apache 2.0](https://www.apache.org).
 
-TensorFlow Hub: https://tfhub.dev/google/elmo/3
-
-Original paper: https://arxiv.org/abs/1802.05365
+### License for the project
+My original code in this repository is licensed under the **MIT License**.

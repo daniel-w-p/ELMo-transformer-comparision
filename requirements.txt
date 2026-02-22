@@ -1,3 +1,4 @@
 tensorflow>=2.10
 tensorflow-hub
+tensorflow-text
 numpy

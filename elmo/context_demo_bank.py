@@ -74,5 +74,41 @@ def main():
         v2 = out[layer].numpy()[1, i2]
         print(layer, cosine(v1, v2))
 
+    print("---------------------")
+    v1 = out["lstm_outputs2"].numpy()[0, i1] - out["elmo"].numpy()[0, i1]
+    v2 = out["lstm_outputs2"].numpy()[1, i2] - out["elmo"].numpy()[0, i2]
+    print("Cosine similarity of differences (context - full meaning) between bank in finance and bank in river: ", cosine(v1, v2))
+
+    print("---------------------")
+    print("--- Compare other differences of tokens to token bank ---")
+    print("--- lstm_outputs1 ---")
+    first_sentence, second_sentence = [], []
+    for i, tok in enumerate(t1):
+        v1 = out["lstm_outputs1"].numpy()[0, i] - out["elmo"].numpy()[0, i]
+        v2 = out["lstm_outputs1"].numpy()[0, i1] - out["elmo"].numpy()[0, i1]
+        first_sentence.append(cosine(v1, v2))
+        v1 = out["lstm_outputs1"].numpy()[1, i] - out["elmo"].numpy()[1, i]
+        v2 = out["lstm_outputs1"].numpy()[1, i2] - out["elmo"].numpy()[1, i2]
+        second_sentence.append(cosine(v1, v2))
+
+    print("First sentence similarity:", first_sentence)
+    print("Second sentence similarity:", second_sentence)
+    print("Cosine similarity of differences between first sentence and bank:", np.mean(first_sentence))
+    print("Cosine similarity of differences between second sentence and bank:", np.mean(second_sentence))
+    print("--- lstm_outputs2 ---")
+    first_sentence, second_sentence = [], []
+    for i, tok in enumerate(t1):
+        v1 = out["lstm_outputs2"].numpy()[0, i] - out["elmo"].numpy()[0, i]
+        v2 = out["lstm_outputs2"].numpy()[0, i1] - out["elmo"].numpy()[0, i1]
+        first_sentence.append(cosine(v1, v2))
+        v1 = out["lstm_outputs2"].numpy()[1, i] - out["elmo"].numpy()[1, i]
+        v2 = out["lstm_outputs2"].numpy()[1, i2] - out["elmo"].numpy()[1, i2]
+        second_sentence.append(cosine(v1, v2))
+
+    print("First sentence similarity:", first_sentence)
+    print("Second sentence similarity:", second_sentence)
+    print("Cosine similarity of differences between first sentence and bank:", np.mean(first_sentence))
+    print("Cosine similarity of differences between second sentence and bank:", np.mean(second_sentence))
+
 if __name__ == "__main__":
     main()
