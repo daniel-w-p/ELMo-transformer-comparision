@@ -7,8 +7,8 @@ import numpy as np
 #    - preprocess (tokenizer + input formatting)
 #    - encoder (BERT-Base Uncased)
 
-PREPROCESS_MODEL = "https://tfhub.dev/tensorflow/bert_en_uncased_preprocess/3"
-BERT_MODEL      = "https://tfhub.dev/tensorflow/bert_en_uncased_L-12_H-768_A-12/3"
+PREPROCESS_MODEL = "https://www.kaggle.com/models/tensorflow/bert/TensorFlow2/en-uncased-preprocess/3"
+BERT_MODEL      = "https://kaggle.com/models/tensorflow/bert/TensorFlow2/en-uncased-l-12-h-768-a-12/3"
 
 def main():
     # preprocessing + encoder

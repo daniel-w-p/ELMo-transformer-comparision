@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflow_hub as hub
 
-HANDLE = "https://tfhub.dev/google/elmo/3"
+HANDLE = "https://www.kaggle.com/models/google/elmo/TensorFlow1/elmo/3"
 
 def main():
     elmo = hub.load(HANDLE)

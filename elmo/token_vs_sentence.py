@@ -2,7 +2,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 
-HANDLE = "https://tfhub.dev/google/elmo/3"
+HANDLE = "https://www.kaggle.com/models/google/elmo/TensorFlow1/elmo/3"
 
 def pick_outputs(outputs: dict):
     """Heuristics: tensor 2D (pooled) and 3D (token-level)."""
